@@ -1,39 +1,1496 @@
-<!DOCTYPE html> 
-<html lang="en"> 
-<head> 
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>AGameRepo - Glow Hockey</title> 
-    <link rel="stylesheet" href="style.css"> 
-</head> 
-<body> 
-    <div class="controls"> 
-        <button id="restart-btn" class="control-btn">Restart</button> 
-        <button id="pause-btn" class="control-btn">Pause</button> 
-    </div> 
-     
-    <div class="score-container"> 
-        <div class="score-section ai-score-section"> 
-            <div class="player-name">COMPUTER</div> 
-            <div class="score" id="aiScore">0</div> 
-        </div> 
-         
-        <div class="score-section player-score-section"> 
-            <div class="player-name">PLAYER</div> 
-            <div class="score" id="playerScore">0</div> 
-        </div> 
-    </div> 
-     
-    <div class="game-container"> 
-        <canvas id="gameCanvas"></canvas> 
-        <div class="game-status" id="gameStatus">Touch the ball to start!</div> 
-    </div> 
-     
-    <div class="game-over" id="gameOver"> 
-        <h2 id="winnerText">Game Over</h2> 
-        <button id="restart-game" class="restart-btn">Play Again</button> 
-    </div> 
-     
-    <script src="script.js"></script> 
-</body> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shoe Deals Grid</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+
+body{
+  background:#f2f2f2;
+}
+
+.container{
+  padding:12px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  overflow:hidden;
+  position:relative;
+}
+
+.card.gray{
+  background:#d6d6d6;
+}
+
+.card.light{
+  background:#efefef;
+}
+
+.top-badges{
+  position:absolute;
+  top:10px;
+  left:10px;
+  display:flex;
+  gap:6px;
+  z-index:2;
+}
+
+.badge{
+  background:#e9e9e9;
+  color:#555;
+  font-size:11px;
+  padding:4px 7px;
+  border-radius:6px;
+  font-weight:600;
+}
+
+.wishlist{
+  position:absolute;
+  top:10px;
+  right:10px;
+  width:32px;
+  height:32px;
+  background:#fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  color:#555;
+  z-index:2;
+}
+
+.img-wrap{
+  height:170px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.img-wrap img{
+  max-width:90%;
+  max-height:90%;
+}
+
+.rating{
+  position:absolute;
+  bottom:10px;
+  left:10px;
+  background:#fff;
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:4px;
+}
+
+.star{
+  color:#1aaa55;
+}
+
+.details{
+  padding:10px;
+}
+
+.brand{
+  font-weight:700;
+  font-size:15px;
+  margin-bottom:2px;
+}
+
+.title{
+  font-size:13px;
+  color:#666;
+  margin-bottom:6px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.price-row{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  margin-bottom:6px;
+}
+
+.discount{
+  color:#1aaa55;
+  font-weight:700;
+  font-size:14px;
+}
+
+.old-price{
+  color:#999;
+  text-decoration:line-through;
+  font-size:13px;
+}
+
+.new-price{
+  font-weight:800;
+  font-size:16px;
+}
+
+.hot{
+  display:inline-block;
+  background:#e6f6ea;
+  color:#1aaa55;
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:6px;
+  font-weight:600;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <div class="grid">
+
+    <!-- Card 1 -->
+    <div class="card light">
+      <div class="top-badges">
+
+      </div>
+
+
+      <div class="img-wrap">
+        <img src="https://i.ibb.co/wFvVqLZz/Screenshot-2026-01-08-19-02-56-609-com-whatsapp-edit.jpg" alt="">
+      </div>
+
+      <div class="rating">
+        4.4 <span class="star">★</span> | 9
+      </div>
+
+      <div class="details">
+        <div class="brand">Asics</div>
+        <div class="title">GAME FF Tennis Shoes F...</div>
+
+        <div class="price-row">
+          <div class="discount">↓51%</div>
+          <div class="old-price">₹8,999</div>
+          <div class="new-price">₹4,409</div>
+        </div>
+
+        <div class="hot">Hot Deal</div>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card gray">
+      <div class="top-badges">
+
+      </div>
+
+
+      <div class="img-wrap">
+        <img src="https://i.ibb.co/W4xRtVvY/Screenshot-2026-01-08-19-03-22-207-com-whatsapp-edit.jpg" alt="">
+      </div>
+
+      <div class="rating">
+        4.4 <span class="star">★</span> | 173
+      </div>
+
+      <div class="details">
+        <div class="brand">Asics</div>
+        <div class="title">TIGER RUNNER II Casual...</div>
+
+        <div class="price-row">
+          <div class="discount">↓52%</div>
+          <div class="old-price">₹6,999</div>
+          <div class="new-price">₹3,290</div>
+        </div>
+
+        <div class="hot">Hot Deal</div>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+
+
+      <div class="img-wrap">
+        <img src="https://i.ibb.co/Kxrf2cC4/Screenshot-2026-01-08-19-03-43-298-com-whatsapp-edit.jpg" alt="">
+      </div>
+
+      <div class="rating">
+        4.2 <span class="star">★</span> | 101
+      </div>
+
+      <div class="details">
+        <div class="brand">Skechers</div>
+        <div class="title">VAPOR FOAM - ROUDER ...</div>
+
+        <div class="price-row">
+          <div class="discount">↓52%</div>
+          <div class="old-price">₹6,999</div>
+          <div class="new-price">₹3,290</div>
+        </div>
+
+        <div class="hot">Hot Deal</div>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card light">
+
+
+      <div class="img-wrap">
+        <img src="https://i.ibb.co/0yF0DhKq/Screenshot-2026-01-08-19-03-59-257-com-whatsapp-edit.jpg" alt="">
+      </div>
+
+      <div class="rating">
+        4.1 <span class="star">★</span> | 3k
+      </div>
+
+      <div class="details">
+        <div class="brand">Skechers</div>
+        <div class="title">GLIDE-STEP Walking Sho...</div>
+
+        <div class="price-row">
+          <div class="discount">↓53%</div>
+          <div class="old-price">₹7,499</div>
+          <div class="new-price">₹3,450</div>
+        </div>
+
+        <div class="hot">Hot Deal</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Grid</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff; /* NO GREY */
+  padding: 12px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  display: block;
+  background: #ffffff;
+}
+
+/* DISCOUNT BADGE (from next image pattern) */
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2fa84f;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* WISHLIST */
+.wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid #eee;
+}
+
+/* CONTENT */
+.content {
+  padding: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0 6px;
+}
+
+/* RATING */
+.rating {
+  font-size: 12px;
+  color: #222;
+  margin-bottom: 6px;
+}
+
+.rating span {
+  color: #2fa84f;
+  font-weight: 600;
+}
+
+/* PRICE */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.new {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.old {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* HOT DEAL */
+.tag {
+  display: inline-block;
+  margin-top: 6px;
+  background: #e6f4ea;
+  color: #2fa84f;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="discount">51% OFF</div>
+
+    <img src="https://i.ibb.co/FkY5wnxF/Screenshot-2026-01-08-19-04-13-475-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">GAME FF Tennis Shoes</div>
+      <div class="rating"><span>★</span> 4.4 | 9</div>
+      <div class="price">
+        <div class="new">₹4,409</div>
+        <div class="old">₹8,999</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    
+    <img src="https://i.ibb.co/8DM0ccs6/Screenshot-2026-01-08-19-04-32-142-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">TIGER RUNNER II</div>
+      <div class="rating"><span>★</span> 4.4 | 173</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+       </div>
+  </div>
+
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/WWz6ysMb/Screenshot-2026-01-08-19-04-45-650-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">VAPOR FOAM</div>
+      <div class="rating"><span>★</span> 4.2 | 101</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="discount">53% OFF</div>
+    
+    <img src="https://i.ibb.co/zVVydJBv/Screenshot-2026-01-08-19-05-00-547-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">GLIDE-STEP Walking</div>
+      <div class="rating"><span>★</span> 4.1 | 3k</div>
+      <div class="price">
+        <div class="new">₹3,450</div>
+        <div class="old">₹7,499</div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Grid</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  padding: 12px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  display: block;
+}
+
+/* DISCOUNT */
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2fa84f;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* WISHLIST */
+.wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: 1px solid #eee;
+}
+
+/* CONTENT */
+.content {
+  padding: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0 6px;
+}
+
+/* RATING */
+.rating {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.rating span {
+  color: #2fa84f;
+  font-weight: 600;
+}
+
+/* PRICE */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.new {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.old {
+  font-size: 13px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  margin: 6px 0;
+  background: #e6f4ea;
+  color: #2fa84f;
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* ADD TO CART */
+.cart-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px;
+  background: #ff9f00;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cart-btn:active {
+  transform: scale(0.98);
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="discount">51% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/zHnzF28Q/Screenshot-2026-01-08-19-05-38-016-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">GAME FF Tennis Shoes</div>
+      <div class="rating"><span>★</span> 4.4 | 9</div>
+      <div class="price">
+        <div class="new">₹4,409</div>
+        <div class="old">₹8,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn"
+        onclick="addToCart('Asics GAME FF Tennis Shoes', 4409)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/395MX8M6/Screenshot-2026-01-08-19-06-01-667-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">TIGER RUNNER II</div>
+      <div class="rating"><span>★</span> 4.4 | 173</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn"
+        onclick="addToCart('Asics Tiger Runner II', 3290)">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({
+      name: name,
+      price: price,
+      qty: 1
+    });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  console.log("Cart:", cart);
+  alert(name + " added to cart");
+}
+</script>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Grid</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  padding: 12px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  display: block;
+}
+
+/* DISCOUNT */
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2fa84f;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* WISHLIST */
+.wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* CONTENT */
+.content {
+  padding: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0 6px;
+}
+
+/* RATING */
+.rating {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.rating span {
+  color: #2fa84f;
+  font-weight: 600;
+}
+
+/* PRICE */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.new {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.old {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  margin: 6px 0;
+  background: #e6f4ea;
+  color: #2fa84f;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* SMALL ADD TO CART */
+.cart-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 0;
+  background: #ff9f00;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-btn:active {
+  transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+  <!-- CARD 1 -->
+  <div class="card">
+    <div class="discount">51% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/d0xBGsg8/Screenshot-2026-01-08-19-06-18-820-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">GAME FF Tennis Shoes</div>
+      <div class="rating"><span>★</span> 4.4 | 9</div>
+      <div class="price">
+        <div class="new">₹4,409</div>
+        <div class="old">₹8,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Asics GAME FF', 4409)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/1t8LSBYt/Screenshot-2026-01-08-19-06-37-072-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">TIGER RUNNER II</div>
+      <div class="rating"><span>★</span> 4.4 | 173</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Asics Tiger Runner', 3290)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/S7Pj6hdt/Screenshot-2026-01-08-19-06-58-263-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">Vapor Foam</div>
+      <div class="rating"><span>★</span> 4.2 | 101</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Skechers Vapor Foam', 3290)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="card">
+    <div class="discount">53% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/4ZcvQTpW/Screenshot-2026-01-08-19-07-14-535-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">Glide-Step Walking</div>
+      <div class="rating"><span>★</span> 4.1 | 3k</div>
+      <div class="price">
+        <div class="new">₹3,450</div>
+        <div class="old">₹7,499</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Skechers Glide-Step', 3450)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="card">
+    <div class="discount">48% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/ymSNPgX9/Screenshot-2026-01-08-19-05-19-762-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Nike</div>
+      <div class="title">Revolution 6</div>
+      <div class="rating"><span>★</span> 4.3 | 520</div>
+      <div class="price">
+        <div class="new">₹3,799</div>
+        <div class="old">₹7,299</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Nike Revolution 6', 3799)">Add to Cart</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let item = cart.find(p => p.name === name);
+
+  if (item) {
+    item.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart");
+}
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Grid</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  padding: 12px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  display: block;
+}
+
+/* DISCOUNT */
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2fa84f;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* WISHLIST */
+.wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* CONTENT */
+.content {
+  padding: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0 6px;
+}
+
+/* RATING */
+.rating {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.rating span {
+  color: #2fa84f;
+  font-weight: 600;
+}
+
+/* PRICE */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.new {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.old {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  margin: 6px 0;
+  background: #e6f4ea;
+  color: #2fa84f;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* SMALL ADD TO CART */
+.cart-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 0;
+  background: #ff9f00;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-btn:active {
+  transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+  <!-- CARD 1 -->
+  <div class="card">
+    <div class="discount">51% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/My1J2qjR/Screenshot-2026-01-08-18-59-48-303-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">GAME FF Tennis Shoes</div>
+      <div class="rating"><span>★</span> 4.4 | 9</div>
+      <div class="price">
+        <div class="new">₹4,409</div>
+        <div class="old">₹8,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Asics GAME FF', 4409)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/7t0BHy9B/Screenshot-2026-01-08-19-00-22-807-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">TIGER RUNNER II</div>
+      <div class="rating"><span>★</span> 4.4 | 173</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Asics Tiger Runner', 3290)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/V0TQqH7H/Screenshot-2026-01-08-19-00-46-496-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">Vapor Foam</div>
+      <div class="rating"><span>★</span> 4.2 | 101</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Skechers Vapor Foam', 3290)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="card">
+    <div class="discount">53% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/fGXk4vpK/Screenshot-2026-01-08-19-01-11-194-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">Glide-Step Walking</div>
+      <div class="rating"><span>★</span> 4.1 | 3k</div>
+      <div class="price">
+        <div class="new">₹3,450</div>
+        <div class="old">₹7,499</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Skechers Glide-Step', 3450)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="card">
+    <div class="discount">48% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/vCvQdL3K/Screenshot-2026-01-08-19-01-31-441-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Nike</div>
+      <div class="title">Revolution 6</div>
+      <div class="rating"><span>★</span> 4.3 | 520</div>
+      <div class="price">
+        <div class="new">₹3,799</div>
+        <div class="old">₹7,299</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Nike Revolution 6', 3799)">Add to Cart</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let item = cart.find(p => p.name === name);
+
+  if (item) {
+    item.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart");
+}
+</script>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Grid</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  padding: 12px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+/* IMAGE */
+.card img {
+  width: 100%;
+  display: block;
+}
+
+/* DISCOUNT */
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2fa84f;
+  color: #fff;
+  font-size: 11px;
+  padding: 4px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* WISHLIST */
+.wishlist {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* CONTENT */
+.content {
+  padding: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.title {
+  font-size: 13px;
+  color: #666;
+  margin: 2px 0 6px;
+}
+
+/* RATING */
+.rating {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.rating span {
+  color: #2fa84f;
+  font-weight: 600;
+}
+
+/* PRICE */
+.price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.new {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.old {
+  font-size: 12px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+/* TAG */
+.tag {
+  display: inline-block;
+  margin: 6px 0;
+  background: #e6f4ea;
+  color: #2fa84f;
+  font-size: 11px;
+  padding: 3px 7px;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+/* SMALL ADD TO CART */
+.cart-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 6px 0;
+  background: #ff9f00;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cart-btn:active {
+  transform: scale(0.97);
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid">
+
+  <!-- CARD 1 -->
+  <div class="card">
+    <div class="discount">51% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/9H6KmR05/Screenshot-2026-01-08-19-01-51-939-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">GAME FF Tennis Shoes</div>
+      <div class="rating"><span>★</span> 4.4 | 9</div>
+      <div class="price">
+        <div class="new">₹4,409</div>
+        <div class="old">₹8,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Asics GAME FF', 4409)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 2 -->
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/Q393T9zp/Screenshot-2026-01-08-19-02-09-350-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Asics</div>
+      <div class="title">TIGER RUNNER II</div>
+      <div class="rating"><span>★</span> 4.4 | 173</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Asics Tiger Runner', 3290)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 3 -->
+  <div class="card">
+    <div class="discount">52% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/GfrpK921/Screenshot-2026-01-08-19-02-24-817-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">Vapor Foam</div>
+      <div class="rating"><span>★</span> 4.2 | 101</div>
+      <div class="price">
+        <div class="new">₹3,290</div>
+        <div class="old">₹6,999</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Skechers Vapor Foam', 3290)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 4 -->
+  <div class="card">
+    <div class="discount">53% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/wNDGQT6q/Screenshot-2026-01-08-19-02-41-350-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Skechers</div>
+      <div class="title">Glide-Step Walking</div>
+      <div class="rating"><span>★</span> 4.1 | 3k</div>
+      <div class="price">
+        <div class="new">₹3,450</div>
+        <div class="old">₹7,499</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Skechers Glide-Step', 3450)">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- CARD 5 -->
+  <div class="card">
+    <div class="discount">48% OFF</div>
+    <div class="wishlist">♡</div>
+    <img src="https://i.ibb.co/RpQqW1R9/Screenshot-2026-01-08-19-02-56-609-com-whatsapp-edit.jpg">
+    <div class="content">
+      <div class="brand">Nike</div>
+      <div class="title">Revolution 6</div>
+      <div class="rating"><span>★</span> 4.3 | 520</div>
+      <div class="price">
+        <div class="new">₹3,799</div>
+        <div class="old">₹7,299</div>
+      </div>
+      <div class="tag">Hot Deal</div>
+      <button class="cart-btn" onclick="addToCart('Nike Revolution 6', 3799)">Add to Cart</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function addToCart(name, price) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  let item = cart.find(p => p.name === name);
+
+  if (item) {
+    item.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert(name + " added to cart");
+}
+</script>
+
+</body>
+</html>
+
